@@ -4,6 +4,12 @@ A step by step guide to unlocking ADB and enabling direct APK installation from 
 
 ---
 
+> [!NOTE]
+> **Firmware History and Local Unlock Lockdown**
+> On earlier BYD firmware builds, activating developer options and ADB was possible entirely offline by dialling the engineering code and generating an unlock token locally from the device IMEI number. BYD has since locked this down across recent software releases. While the exact version cutoff varies across vehicle models and regions, newer builds mandate dealer level diagnostic tools (such as BYD VDS) or remote authorization to validate the displayed QR code.
+
+---
+
 > [!WARNING]
 > **Firmware 2602 Downgrade Limitation**
 > If your vehicle is on firmware version 2602, attempting to downgrade to an older release will not work. The update progress bar runs for approximately thirty seconds before the system restarts straight back into version 2602. Most guides floating around the web were written for the standard Seal rather than the Seal U DMi. Follow the process below rather than attempting firmware rollbacks.
@@ -12,9 +18,10 @@ A step by step guide to unlocking ADB and enabling direct APK installation from 
 
 ## Remote Service Details
 
-The remote unlock process requires an authorization token provided via Telegram.
+Because newer firmwares require authorized scanner validation rather than local IMEI calculation, the unlock token must be retrieved externally.
 
 * **Contact:** `@bydadb_open` on Telegram
+* **Fee:** There is a small service charge for the remote unlock, payable via PayPal.
 * **Operating Hours:** 08:30 to 23:30 Beijing Time (UTC+8)
 * Contact the provider ahead of time so they are ready before you generate your QR code, as the code will expire quickly once displayed.
 
@@ -27,6 +34,7 @@ The remote unlock process requires an authorization token provided via Telegram.
 * Shared Wi Fi network (both the car and your phone connected to the same wireless router or mobile hotspot).
 * USB flash drive formatted to FAT32 or NTFS containing the APK files you plan to install.
 * Active Bluetooth link between your phone and the car.
+* PayPal account ready to pay the small remote unlocking fee.
 
 ---
 
@@ -48,9 +56,10 @@ The remote unlock process requires an authorization token provided via Telegram.
 
 1. Take a clear photograph of the QR code shown on the car screen.
 2. Send the photograph immediately to `@bydadb_open` on Telegram.
-3. Once the provider authorizes the request remotely, the vehicle display will automatically refresh and show an engineering test interface.
-4. From the menu list, tap **Test Tools**.
-5. Scroll all the way down to the bottom of the page and enable both toggles:
+3. Complete the small fee transfer via PayPal as instructed by the provider.
+4. Once the provider authorizes the request remotely, the vehicle display will automatically refresh and show an engineering test interface.
+5. From the menu list, tap **Test Tools**.
+6. Scroll all the way down to the bottom of the page and enable both toggles:
    * **Wireless adb debug switch**
    * **Debug mode when USB is connected**
 
