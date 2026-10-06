@@ -104,3 +104,15 @@ CAR_IP_ADDRESS:5555
 2. Open the onboard BYD **File Manager** app on the central display.
 3. Select your USB drive, locate your APK files, and tap them to install.
 4. The system will now allow standard installation without being blocked by the stock package manager.
+
+---
+
+## Post Installation Notes and Warranty Information
+
+### System Updates and Persistence
+ADB access should technically persist across standard over the air (OTA) software updates. The underlying configuration and installed unlock package reside inside `/userdata`, which standard update routines do not wipe. However, this has not been fully verified across subsequent major revisions yet. Performing a complete factory reset of the vehicle infotainment system will wipe user data partitions and will almost certainly undo these modifications, requiring the unlock process to be performed again.
+
+### Warranty Considerations
+Use your noggin here. If your rear suspension starts groaning or the high voltage traction battery throws a wobbly, BYD cannot reasonably turn around and blame your sideloaded music player. 
+
+As with any automotive warranty claim, coverage is assessed strictly on the link between the reported fault and the modification itself. The odds of bricking your car by installing Waze or Google Maps locally are practically nil, but exercise basic common sense. Only install APKs sourced from reputable repositories, because if you download shady bloatware from a random corners of the internet and turn your screen into an expensive paperweight, explaining that to the service department with a straight face will be entirely on you.
