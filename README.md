@@ -6,19 +6,24 @@ A step by step guide to unlocking ADB and enabling direct APK installation from 
 
 > [!NOTE]
 > **Firmware History and Local Unlock Lockdown**
-> On earlier BYD firmware builds, activating developer options and ADB was possible entirely offline by dialling the engineering code and generating an unlock token locally from the device IMEI number. BYD has since locked this down across recent software releases. While the exact version cutoff varies across vehicle models and regions, newer builds mandate dealer level diagnostic tools (such as BYD VDS) or remote authorization to validate the displayed QR code.
+> On earlier BYD firmware builds, activating developer options and ADB was possible entirely offline by dialling the engineering code and generating an unlock token locally from the device IMEI number. BYD has since locked this down across recent software releases. While the exact version cutoff varies across vehicle models and regions, newer builds mandate dealer level diagnostic tools (such as BYD VDS) or remote authorisation to validate the displayed QR code.
 
 ---
 
 > [!WARNING]
 > **Firmware 2602 Downgrade Limitation**
 > If your vehicle is on firmware version 2602, attempting to downgrade to an older release will not work. The update progress bar runs for approximately thirty seconds before the system restarts straight back into version 2602. Most guides floating around the web were written for the standard Seal rather than the Seal U DMi. Follow the process below rather than attempting firmware rollbacks.
+>
+> **Firmware 2.3.0 and ADB Removal**
+> Recent rollout of firmware 2.3.0 removes ADB functionality entirely, including on vehicles that previously had it enabled. This follows widespread media coverage of automotive cybersecurity research where analysts demonstrated ADB and CAN bus interactions. 
+> 
+> To be clear and factual: **remote hacking over the internet was never possible**. The demonstrated proof of concept required an analyst to be physically sitting inside the vehicle, manually approving engineering prompts on screen, and physically tapping into vehicle wiring. It is fundamentally no different to someone breaking into any car. However, to comply with strict international vehicle cybersecurity regulations (such as UN R155), BYD opted for the clean fix: stripping the debug interfaces out completely. **If sideloading native applications is something you prioritise, do not install the 2.3.0 over the air update**.
 
 ---
 
 ## Remote Service Details
 
-Because newer firmwares require authorized scanner validation rather than local IMEI calculation, the unlock token must be retrieved externally.
+Because newer firmwares require authorised scanner validation rather than local IMEI calculation, the unlock token must be retrieved externally.
 
 * **Contact:** `@bydadb_open` on Telegram
 * **Fee:** There is a small service charge for the remote unlock, payable via PayPal.
@@ -57,7 +62,7 @@ Because newer firmwares require authorized scanner validation rather than local 
 1. Take a clear photograph of the QR code shown on the car screen.
 2. Send the photograph immediately to `@bydadb_open` on Telegram.
 3. Complete the small fee transfer via PayPal as instructed by the provider.
-4. Once the provider authorizes the request remotely, the vehicle display will automatically refresh and show an engineering test interface.
+4. Once the provider authorises the request remotely, the vehicle display will automatically refresh and show an engineering test interface.
 5. From the menu list, tap **Test Tools**.
 6. Scroll all the way down to the bottom of the page and enable both toggles:
    * **Wireless adb debug switch**
@@ -107,12 +112,8 @@ CAR_IP_ADDRESS:5555
 
 ---
 
-## Post Installation Notes and Warranty Information
+## Warranty Considerations
 
-### System Updates and Persistence
-ADB access should technically persist across standard over the air (OTA) software updates. The underlying configuration and installed unlock package reside inside `/userdata`, which standard update routines do not wipe. However, this has not been fully verified across subsequent major revisions yet. Performing a complete factory reset of the vehicle infotainment system will wipe user data partitions and will almost certainly undo these modifications, requiring the unlock process to be performed again.
+Use your noggin here. If your rear suspension starts groaning or the high voltage traction battery throws a wobbly, BYD cannot reasonably turn around and blame your sideloaded music player.
 
-### Warranty Considerations
-Use your noggin here. If your rear suspension starts groaning or the high voltage traction battery throws a wobbly, BYD cannot reasonably turn around and blame your sideloaded music player. 
-
-As with any automotive warranty claim, coverage is assessed strictly on the link between the reported fault and the modification itself. The odds of bricking your car by installing Waze or Google Maps locally are practically nil, but exercise basic common sense. Only install APKs sourced from reputable repositories, because if you download shady bloatware from a random corners of the internet and turn your screen into an expensive paperweight, explaining that to the service department with a straight face will be entirely on you.
+As with any automotive warranty claim, coverage is assessed strictly on the link between the reported fault and the modification itself. The odds of bricking your car by installing Waze or Google Maps locally are practically nil, but exercise basic common sense. Only install APKs sourced from reputable repositories, because if you download shady bloatware from a random corner of the internet and turn your screen into an expensive paperweight, explaining that to the service department with a straight face will be entirely on you.
